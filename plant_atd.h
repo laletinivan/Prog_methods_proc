@@ -1,15 +1,16 @@
 #pragma once
-// Подключение необходимых типов данных
+// РџРѕРґРєР»СЋС‡РµРЅРёРµ РЅРµРѕР±С…РѕРґРёРјС‹С… С‚РёРїРѕРІ РґР°РЅРЅС‹С…
 #include "bush_atd.h"
 #include "tree_atd.h"
+#include "flower_atd.h"
 #include <string>
 namespace plants {
-	// структура, обобщающая все имеющиеся фигуры
+	// СЃС‚СЂСѓРєС‚СѓСЂР°, РѕР±РѕР±С‰Р°СЋС‰Р°СЏ РІСЃРµ РёРјРµСЋС‰РёРµСЃСЏ С„РёРіСѓСЂС‹
 	struct plant {
 		std::string name;
-		// значения ключей для каждой из фигур
-		enum key { BUSH, TREE };
-		key k; // ключ	
+		// Р·РЅР°С‡РµРЅРёСЏ РєР»СЋС‡РµР№ РґР»СЏ РєР°Р¶РґРѕР№ РёР· С„РёРіСѓСЂ
+		enum key { BUSH, TREE, FLOWER };
+		key k; // РєР»СЋС‡	
 		void* data;
 	};
 } // end plants namespace
