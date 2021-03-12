@@ -1,39 +1,18 @@
 #include "flower_atd.h"
+#include <fstream>
 using namespace std;
 namespace plants {
-	void flower::InData(ifstream& ifst) {
-		int tmp;
-		ifst >> tmp;
-		pog = plant::place_of_growth(tmp);
-		ifst >> tmp;
-		t = flower::type(tmp);
+	flower* InFlower(ifstream& ifst) {
+		flower* r = new flower;
+		int temp;
+		ifst >> temp;
+		r->t = flower::type(temp);
+		return r;
 	}
-	void flower::Out(ofstream& ofst) {
-		ofst << "Name is " << name << ", ";
-		ofst << "number of consonants in name = " << cons << ", ";
-		ofst << "place of growth is ";
-		switch (pog) {
-		case Tundra:
-			ofst << "Tundra ";
-			break;
-		case Taiga:
-			ofst << "Taiga ";
-			break;
-		case Forest:
-			ofst << "Forest ";
-			break;
-		case Steppe:
-			ofst << "Steppe ";
-			break;
-		case Jungle:
-			ofst << "Jungle ";
-			break;
-		default:
-			ofst << "<Blank> ";
-			break;
-		}
+
+	void Out(flower& r, ofstream& ofst) {
 		ofst << "and it is flower: type = ";
-		switch (t) {
+		switch (r.t) {
 		case 0:
 			ofst << "Home";
 			break;

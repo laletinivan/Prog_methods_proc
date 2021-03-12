@@ -12,7 +12,7 @@ namespace plants {
 	void Out(tree& t, ofstream& ofst);
 	void Out(flower& r, ofstream& ofst);
 	// Ввод параметров обобщенной фигуры из файла
-	plant* InPlant(ifstream& ifst){
+	plant* InPlant(ifstream& ifst) {
 		plant* pl = new plant;
 		int k;
 		ifst >> k;
@@ -36,7 +36,7 @@ namespace plants {
 	}
 	// Вывод параметров текущей фигуры в поток
 	void Out(plant& s, ofstream& ofst) {
-		ofst << "Name is " << s.name << ", ";
+		ofst << "Name is " << s.name << " ";
 		switch (s.k) {
 		case plant::key::BUSH:
 			Out(*(bush*)s.data, ofst);
