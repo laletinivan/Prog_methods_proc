@@ -10,6 +10,7 @@ namespace plants {
 	void Clear(container& c);
 	void In(container& c, ifstream& ifst);
 	void Out(container& c, ofstream& ofst);
+	void OutBush(container& c, ofstream& ofst);
 }
 
 using namespace plants;
@@ -28,6 +29,7 @@ int main(int argc, char* argv[]) {
 	In(c, ifst);
 	ofst << "Filled container. " << endl;
 	Out(c, ofst);
+	OutBush(c, ofst);
 	Clear(c);
 	ofst << "Empty container. " << endl;
 	Out(c, ofst);

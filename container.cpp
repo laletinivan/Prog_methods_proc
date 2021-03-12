@@ -47,4 +47,19 @@ namespace plants {
 			temp = temp->next;
 		}
 	}
+	//Вывод только кустов
+	void OutBush(container& c, ofstream& ofst) {
+		ofst << "Only bushes." << endl;
+		elem* temp = c.head;
+		for (int i = 0; i < c.size; i++) {
+			ofst << i << ": ";
+			if (temp->data->k == plant::BUSH) {
+				Out(*(temp->data), ofst);
+			}
+			else {
+				ofst << endl;
+			}
+			temp = temp->next;
+		}
+	}
 } // end plants namespace
