@@ -10,6 +10,8 @@ namespace plants {
 		// значения ключей для каждой из фигур
 		enum key { BUSH, TREE };
 		key k; // ключ	
+		enum place_of_growth { Tundra, Taiga, Forest, Steppe, Jungle };
+		place_of_growth pog;
 		void* data;
 	};
 } // end plants namespace

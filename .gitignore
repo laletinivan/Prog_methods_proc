@@ -3,3 +3,12 @@
 ################################################################################
 
 /.vs
+/Debug
+/x64/Debug/PP.tlog
+/x64/Debug
+/PP.vcxproj.user
+/PP.vcxproj.filters
+/PP.vcxproj
+/PP.sln
+/Out.txt
+/In.txt
