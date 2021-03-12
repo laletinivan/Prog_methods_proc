@@ -20,6 +20,10 @@ namespace plants {
 		}
 		return count;
 	}
+	// —равнение дл€ растений по количеству согласных букв
+	bool Compare(plant& first, plant& second) {
+		return first.cons < second.cons;
+	}
 	// ¬вод параметров обобщенной фигуры из файла
 	plant* InPlant(ifstream& ifst){
 		plant* pl = new plant;
