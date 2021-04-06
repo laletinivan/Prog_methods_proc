@@ -11,14 +11,30 @@ namespace plants {
 	void Out(bush& r, ofstream& ofst);
 	void Out(tree& t, ofstream& ofst);
 	void Out(flower& r, ofstream& ofst);
-	// ���� ���������� ���������� ������ �� �����
-	plant* InPlant(ifstream& ifst) {
+	// Количество согласных букв
+	int Consanants(plant& p) {
+		string vowel = "AEIOUaeiou";
+		int count = 0;
+		for (int i = 0; i < p.name.length(); i++) {
+			if (vowel.find(p.name[i]) == string::npos) {
+				count++;
+			}
+		}
+		return count;
+	}
+	// Сравнение для растений по количеству согласных букв
+	bool Compare(plant& first, plant& second) {
+		return first.cons < second.cons;
+	}
+	// Ввод параметров обобщенной фигуры из файла
+	plant* InPlant(ifstream& ifst){
 		plant* pl = new plant;
 		int k,temp;
 		ifst >> k;
 		ifst >> pl->name;
 		ifst >> temp;
 		pl->pog = plant::place_of_growth(temp);
+		pl->cons = Consanants(*pl);
 		switch (k) {
 		case 1:
 			pl->k = plant::key::BUSH;
