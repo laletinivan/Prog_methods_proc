@@ -9,7 +9,7 @@ namespace plants {
 	struct plant {
 		std::string name;
 		// �������� ������ ��� ������ �� �����
-		int cons
+		int cons;
 		enum key { BUSH, TREE, FLOWER };
 		key k; // ����	
 		enum place_of_growth { Tundra, Taiga, Forest, Steppe, Jungle };
