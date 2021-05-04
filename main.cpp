@@ -6,35 +6,46 @@ using namespace std;
 
 namespace plants {
 	// Сигнатуры требуемых внешних функций
-	void Init(container& c);
-	void Clear(container& c);
-	void In(container& c, ifstream& ifst);
-	void Out(container& c, ofstream& ofst);
-	void OutBush(container& c, ofstream& ofst);
-	void Sort(container& c);
+	void init(container& c);
+	void clear(container& c);
+	void in(container& c, ifstream& ifst);
+	void out(container& c, ofstream& ofst);
+	void out_bush(container& c, ofstream& ofst);
+	void sort(container& c);
 }
 
 using namespace plants;
 
 int main(int argc, char* argv[]) {
-	if (argc != 3) {
+	if (argc != 3) 
+	{
 		cout << "incorrect command line! "
-			"Waited: command infile outfile" << endl;
+			"Waited: command in_file out_file" << endl;
 		exit(1);
 	}
 	ifstream ifst(argv[1]);
+	if (!ifst.is_open())
+	{
+		cout << "Could not to open input file!" << endl;
+		return 1;
+	}
 	ofstream ofst(argv[2]);
+	if (!ofst.is_open())
+	{
+		cout << "Could not to open output file!" << endl;
+		return 1;
+	}
 	cout << "Start" << endl;
 	container c;
-	Init(c);
-	In(c, ifst);
+	init(c);
+	in(c, ifst);
 	ofst << "Filled container. " << endl;
-	Sort(c);
-	Out(c, ofst);
-	OutBush(c, ofst);
-	Clear(c);
+	sort(c);
+	out(c, ofst);
+	out_bush(c, ofst);
+	clear(c);
 	ofst << "Empty container. " << endl;
-	Out(c, ofst);
+	out(c, ofst);
 	cout << "Stop" << endl;
 	return 0;
 }

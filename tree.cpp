@@ -1,16 +1,31 @@
 #include <fstream>
+#include <iostream>
 #include "tree_atd.h"
 using namespace std;
-namespace plants {
+namespace plants 
+{
 	// Ввод параметров треугольника из потока
-	tree* InTree(ifstream& ifst)
+	tree* in_tree(ifstream& ifst)
 	{
+		int tmp_age;
 		tree* t = new tree;
-		ifst >> t->age;
+		ifst >> tmp_age;
+		if (ifst.fail())
+		{
+			cout << "Error! Unexpected end of input!" << endl;
+			exit(1);
+		}
+
+		if (tmp_age < 0)
+		{
+			cout << "Error! Age cant be negative!" << endl;
+			exit(1);
+		}
+		t->age = tmp_age;
 		return t;
 	}
 	// Вывод параметров треугольника в поток
-	void Out(tree& t, ofstream& ofst)
+	void out(tree& t, ofstream& ofst)
 	{
 		ofst << "and it is tree: age = " << t.age << endl;
 	}

@@ -1,18 +1,23 @@
 #pragma once
-// ����������� ����������� ����� ������
 #include "bush_atd.h"
 #include "tree_atd.h"
 #include "flower_atd.h"
 #include <string>
-namespace plants {
-	// ���������, ���������� ��� ��������� ������
-	struct plant {
+namespace plants 
+{
+	struct plant 
+	{
 		std::string name;
-		// �������� ������ ��� ������ �� �����
 		int cons;
-		enum key { BUSH, TREE, FLOWER };
-		key k; // ����	
-		enum place_of_growth { Tundra, Taiga, Forest, Steppe, Jungle };
+		enum key 
+		{ 
+			BUSH, TREE, FLOWER 
+		};
+		key k;
+		enum place_of_growth 
+		{ 
+			TUNDRA, TAIGA, FOREST, STEPPE, JUNGLE 
+		};
 		place_of_growth pog;
 		void* data;
 	};

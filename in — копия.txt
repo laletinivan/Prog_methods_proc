@@ -1,0 +1,14 @@
+3
+gladiolus 3 0
+2 
+dub 2 3
+2
+bereza 3 200
+1
+malina 2 6
+1
+kust 3 3
+2
+derevo 2 220
+3
+tsvetok 1 1

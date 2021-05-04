@@ -4,18 +4,18 @@
 using namespace std;
 namespace plants {
 	// Сигнатуры требуемых внешних функций
-	plant* InPlant(ifstream& ifst);
-	void Out(plant& s, ofstream& ofst);
-	bool Compare(plant& first, plant& second);
+	plant* in_plant(ifstream& ifst);
+	void out(plant& s, ofstream& ofst);
+	bool compare(plant& first, plant& second);
 	// Инициализация контейнера
-	void Init(container& c) {
+	void init(container& c) {
 		c.head = NULL;
 		c.tail = NULL;
 		c.size = 0;
 	}
 	// Очистка контейнера от элементов
 	// (освобождение памяти)
-	void Clear(container& c) {
+	void clear(container& c) {
 		while (c.size != 0) {
 			elem* temp = c.head->next;
 			delete c.head;
@@ -24,7 +24,7 @@ namespace plants {
 		}
 	}
 	// Новый элемент добавить в список
-	void Push(container& c, elem* tmp) {
+	void push(container& c, elem* tmp) {
 		c.size++;
 		if (c.head != NULL) {
 			c.tail->next = tmp;
@@ -37,16 +37,16 @@ namespace plants {
 		};
 	}
 	// Ввод содержимого контейнера из указанного потока
-	void In(container& c, ifstream& ifst) {
+	void in(container& c, ifstream& ifst) {
 		while (!ifst.eof()) {
 			elem* temp = new elem;
-			temp->data = InPlant(ifst);
+			temp->data = in_plant(ifst);
 			temp->next = c.head;
-			Push(c, temp);
+			push(c, temp);
 		}
 	}
 	//Удаление 1 элемента списка
-	void DeleteAt(container& c, int pos) {
+	void delete_at(container& c, int pos) {
 		elem* tmp = c.head;
 		pos = abs(pos);
 		if (pos > c.size) {
@@ -58,6 +58,13 @@ namespace plants {
 			c.size--;
 			return;
 		}
+		if (pos == c.size - 1) {
+			int count = 0;
+			while (count != c.size - 2) {
+				tmp = tmp->next;
+			}
+			c.tail = tmp;
+		}
 		for (int i = 0; i < c.size - 1; i++) {
 			if (i + 1 == pos) {
 				tmp->next = tmp->next->next;
@@ -67,9 +74,9 @@ namespace plants {
 		}
 	}
 	//Сортировка
-	void Sort(container& c) {
+	void sort(container& c) {
 		container c_sort;
-		Init(c_sort);
+		init(c_sort);
 		int num;
 		elem* i, *small;
 		while (c.size != 0) {
@@ -78,38 +85,38 @@ namespace plants {
 			num = 0;
 			if (c.size != 1) {
 				for (int a = 1; a < c.size; a++) {
-					if (Compare(*(i->data), *(small->data))) {
+					if (compare(*(i->data), *(small->data))) {
 						num = a;
 						small = i;
 					}
 					i = i->next;
 				}
 			}
-			DeleteAt(c, num);
-			Push(c_sort, small);
+			delete_at(c, num);
+			push(c_sort, small);
 		}
 		c = c_sort;
 		c.head = c_sort.head;
 		c.tail = c_sort.tail;
 	}
 	//Вывод элементов
-	void Out(container& c, ofstream& ofst) {
+	void out(container& c, ofstream& ofst) {
 		ofst << "Container contains " << c.size << " elements." << endl;
 		elem* temp = c.head;
 		for (int i = 0; i < c.size; i++) {
 			ofst << i << ": ";
-			Out(*(temp->data), ofst);
+			out(*(temp->data), ofst);
 			temp = temp->next;
 		}
 	}
 	//Вывод только кустов
-	void OutBush(container& c, ofstream& ofst) {
+	void out_bush(container& c, ofstream& ofst) {
 		ofst << "Only bushes." << endl;
 		elem* temp = c.head;
 		for (int i = 0; i < c.size; i++) {
 			ofst << i << ": ";
 			if (temp->data->k == plant::BUSH) {
-				Out(*(temp->data), ofst);
+				out(*(temp->data), ofst);
 			}
 			else {
 				ofst << endl;
