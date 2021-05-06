@@ -124,4 +124,75 @@ namespace plants {
 			temp = temp->next;
 		}
 	}
+	void multimethod(container& c, ofstream& ofst)
+	{
+		elem* tmp1 = c.head;
+		elem* tmp2 = tmp1->next;
+		ofst << "Multimethod" << endl;
+		for (int i = 0; i < c.size - 1; i++)
+		{
+			for (int j = i + 1; j < c.size; j++)
+			{
+				switch (tmp1->data->k)
+				{
+				case plant::key::TREE:
+					switch (tmp2->data->k) {
+					case plant::key::TREE:
+						ofst << "Tree and tree" << endl;
+						break;
+					case plant::key::BUSH:
+						ofst << "Tree and bush" << endl;
+						break;
+					case plant::key::FLOWER:
+						ofst << "Tree and flower" << endl;
+						break;
+					default:
+						ofst << "Unknown key" << endl;
+						break;
+					}
+					break;
+				case plant::key::BUSH:
+					switch (tmp2->data->k) {
+					case plant::key::TREE:
+						ofst << "Bush and tree" << endl;
+						break;
+					case plant::key::BUSH:
+						ofst << "Bush and bush" << endl;
+						break;
+					case plant::key::FLOWER:
+						ofst << "Bush and flower" << endl;
+						break;
+					default:
+						ofst << "Unknown key" << endl;
+						break;
+					}
+					break;
+				case plant::key::FLOWER:
+					switch (tmp2->data->k) {
+					case plant::key::TREE:
+						ofst << "Flower and tree" << endl;
+						break;
+					case plant::key::BUSH:
+						ofst << "Flower and bush" << endl;
+						break;
+					case plant::key::FLOWER:
+						ofst << "Flower and flower" << endl;
+						break;
+					default:
+						ofst << "Unknown key" << endl;
+						break;
+					}
+					break;
+				default:
+					ofst << "Unknown key" << endl;
+					break;
+				}
+				out(*(tmp1->data), ofst);
+				out(*(tmp2->data), ofst);
+				tmp2 = tmp2->next;
+			}
+			tmp1 = tmp1->next;
+			tmp2 = tmp1->next;
+		}
+	}
 } // end plants namespace

@@ -12,6 +12,7 @@ namespace plants {
 	void out(container& c, ofstream& ofst);
 	void out_bush(container& c, ofstream& ofst);
 	void sort(container& c);
+	void multimethod(container& c, ofstream& ofst);
 }
 
 using namespace plants;
@@ -43,6 +44,7 @@ int main(int argc, char* argv[]) {
 	sort(c);
 	out(c, ofst);
 	out_bush(c, ofst);
+	multimethod(c, ofst);
 	clear(c);
 	ofst << "Empty container. " << endl;
 	out(c, ofst);
